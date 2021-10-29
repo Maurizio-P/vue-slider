@@ -35,18 +35,21 @@ const vueApp = new Vue({
     },
     methods: {
         arrowUp(){
-            this.elementCurrent--
-
-            if(this.elementCurrent < 0) {
-                this.elementCurrent = this.elements.length - 1
-            }
+           this.elementCurrent = this.elementCurrent === 0 ? this.elements.length - 1 : this.elementCurrent - 1
         },
         arrowBottom(){
-            this.elementCurrent++
+            // this.elementCurrent++
 
-            if(this.elementCurrent > this.elements.length -1){
-                this.elementCurrent = 0
-            }
+            // if(this.elementCurrent > this.elements.length -1){
+            //     this.elementCurrent = 0
+            // }
+
+            this.elementCurrent = this.elementCurrent === this.elements.length - 1 ? this.elementCurrent = 0 : this.elementCurrent + 1
         },
+    },
+    mounted() {
+        setInterval(() => {
+            this.arrowBottom()
+        }, 3000);
     }
 })
