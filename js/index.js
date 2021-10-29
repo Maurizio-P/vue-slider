@@ -3,11 +3,11 @@ Vue.config.devtools = true
 const vueApp = new Vue({
     el: "#app",
     data: {
-        element : [
+        elements: [
             {
                 image: 'img/01.jpg',
                 title: "Svezia",
-                text:     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',                ,
+                text:     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
             },
             {
                 image: 'img/02.jpg',
@@ -29,6 +29,24 @@ const vueApp = new Vue({
                 title: "Paradise",
                 text: "testo paradise",
             },
-        ]
+        ],
+
+        elementCurrent: 0,
+    },
+    methods: {
+        arrowUp(){
+            this.elementCurrent--
+
+            if(this.elementCurrent < 0) {
+                this.elementCurrent = this.elements.length - 1
+            }
+        },
+        arrowBottom(){
+            this.elementCurrent++
+
+            if(this.elementCurrent > this.elements.length -1){
+                this.elementCurrent = 0
+            }
+        },
     }
 })
